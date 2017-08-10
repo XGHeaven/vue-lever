@@ -13,16 +13,20 @@ function DisableLever(name) {
 function LeverPromiseDecorator(target, key, desc, name) {
   const func = desc.value
   desc.value = function(...args) {
-    const promise = func(...args)
+    this.$lever.t(name)
+    let promise = func(...args)
     if (promise.then) {
-      this.$lever.t(name)
-      promise
-        .then(() => {
+      promise = promise
+        .then(value => {
           this.$lever.f(name)
+          return value
         })
-        .catch(() => {
+        .catch(err => {
           this.$lever.f(name)
+          throw err
         })
+    } else {
+      this.$lever.f(name)
     }
     return promise
   }
