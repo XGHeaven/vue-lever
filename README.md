@@ -83,7 +83,11 @@ all variable would store in `this.levers`
 
 such as `this.levers.loading`, you can use `levers.loading` in template to replace `loading`
 
-> Remember: function must return a promise, if function don't return promise, the `loading` would been set `true` and immediate been set `false` again.
+> Remember: function is better to return a promise, if function don't return promise,
+> the `loading` would been set `true` and immediate been set `false` again.
+
+> And `Lever` decorator only add state manage in function.
+> This means whatever origin function return, the decorated function would return as same as origin function.
 
 > If you want to use Decorator, please make sure you enabled babel transform of decorator.
 

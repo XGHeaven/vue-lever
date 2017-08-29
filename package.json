@@ -1,6 +1,6 @@
 {
   "name": "vue-lever",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "a plugin can help components to manage true/false state of data",
   "main": "dist/lever.js",
   "scripts": {
