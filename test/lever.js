@@ -71,6 +71,18 @@ test('decorator', t => {
   })
 })
 
+test('decorator keep this', t => {
+  const vm = new Vue({
+    methods: {
+      @Lever.Lever('action')
+      asyncAction() {
+        t.is(this, vm)
+      },
+    },
+  })
+  return vm.asyncAction()
+})
+
 test('decorator transfer resolve/reject data', t => {
   const vm = new Vue({
     methods: {
