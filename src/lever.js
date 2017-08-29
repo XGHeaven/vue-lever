@@ -14,7 +14,13 @@ function LeverPromiseDecorator(target, key, desc, name) {
   const func = desc.value
   desc.value = function(...args) {
     this.$lever.t(name)
-    let promise = func.apply(this, args)
+    let promise
+    try {
+      promise = func.apply(this, args)
+    } catch (e) {
+      this.$lever.f(name)
+      throw e
+    }
     if (promise && promise.then) {
       promise = promise
         .then(value => {

@@ -121,3 +121,22 @@ test('decorator if promise has error, set value to false', t => {
     t.false(vm.levers.action)
   })
 })
+
+test('decorator return origin function value or throw error', t => {
+  const vm = new Vue({
+    methods: {
+      @Lever.Lever('action1')
+      syncAction() {
+        return 'value'
+      },
+      @Lever.Lever('action2')
+      syncActionWithError() {
+        throw new Error()
+      },
+    },
+  })
+  t.is(vm.syncAction(), 'value')
+  t.throws(vm.syncActionWithError)
+  t.false(vm.levers.action1)
+  t.false(vm.levers.action2)
+})
