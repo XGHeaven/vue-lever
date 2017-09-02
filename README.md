@@ -125,6 +125,15 @@ const vm = new Vue({
 })
 // assert.true(vm.levers.loading)
 // assert.false(vm.levers.used)
+
+// Instance API
+$lever: {
+    (name: String, value: Boolean) => void
+    enabled: (name: String) => void
+    t: (name: String) => void
+    disable: (name: String) => void
+    f: (name: String) => void
+}
 ```
 
 And `levers` also can be a array with string, all default `false`
