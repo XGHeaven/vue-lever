@@ -5,7 +5,7 @@
   "main": "dist/lever.js",
   "scripts": {
     "prepublish": "npm run build",
-    "build": "rollup src/lever.js --output.file dist/lever.js --output.format umd -n VueLever",
+    "build": "rollup -c",
     "precommit": "lint-staged",
     "test": "BABEL_ENV=test ava"
   },
@@ -17,12 +17,16 @@
   },
   "devDependencies": {
     "ava": "^0.22.0",
+    "babel-cli": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-preset-env": "^1.6.0",
+    "babelrc-rollup": "^3.0.0",
     "husky": "^0.14.3",
     "lint-staged": "^4.0.3",
     "prettier": "^1.5.3",
     "rollup": "^0.49.2",
+    "rollup-plugin-babel": "^3.0.2",
     "vue": "^2.4.2"
   },
   "lint-staged": {
@@ -39,5 +43,6 @@
       "babel-register"
     ],
     "babel": "inherit"
-  }
+  },
+  "dependencies": {}
 }
